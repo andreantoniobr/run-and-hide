@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_PlayerBlue
-  m_Shader: {fileID: -6465566751694194690, guid: df5bb027d94a6c44bb32b3c31ec1303f, type: 3}
+  m_Name: M_PathBlue
+  m_Shader: {fileID: -6465566751694194690, guid: edd7abf643fa4bc4e8561d4c280c97cf, type: 3}
   m_ShaderKeywords: TCP2_OUTLINE_CONST_SIZE TCP2_REFLECTIONS_FRESNEL TCP2_RIM_LIGHTING_LIGHTMASK
     TCP2_SHADOW_LIGHT_COLOR TCP2_UV_NORMALS_FULL
   m_LightmapFlags: 0
@@ -148,7 +148,7 @@ Material:
     - _UseMobileMode: 0
     - _UseNormalMap: 0
     - _UseOcclusion: 0
-    - _UseOutline: 1
+    - _UseOutline: 0
     - _UseReflections: 0
     - _UseRim: 0
     - _UseRimLightMask: 1
@@ -156,10 +156,10 @@ Material:
     - _UseSpecular: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.20496617, g: 0.6821495, b: 0.9245283, a: 1}
+    - _BaseColor: {r: 0.38416696, g: 0.7361949, b: 0.9150943, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HColor: {r: 0.32156864, g: 0.8862745, b: 1, a: 1}
+    - _HColor: {r: 0.53733534, g: 0.9145909, b: 0.990566, a: 1}
     - _MatCapColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0.122641504, g: 0.32783017, b: 0.49056602, a: 1}
     - _ReflectionColor: {r: 1, g: 1, b: 1, a: 1}

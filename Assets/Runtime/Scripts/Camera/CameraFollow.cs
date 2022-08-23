@@ -14,16 +14,17 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float armrX = 5f;
     [SerializeField] private float armrZ = 5f;
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (playerController)
         {
             Vector3 currentPosition = transform.position;
             Vector3 targetPosition = playerController.transform.position;
             //currentPosition.x = Mathf.Lerp(currentPosition.x, playerPosition.x, speed * Time.deltaTime);
-            //targetPosition.x = Mathf.Clamp(targetPosition.x, minPositionX.position.x + armrX, maxPositionX.position.x - armrX);
+            
+            targetPosition.x = Mathf.Clamp(targetPosition.x, minPositionX.position.x + armrX, maxPositionX.position.x - armrX);
             targetPosition.z = Mathf.Clamp(targetPosition.z, minPositionZ.position.z + armrZ, maxPositionZ.position.z - armrZ);
-            transform.position = Vector3.Lerp(currentPosition, targetPosition, speed * Time.deltaTime);
+            transform.position = Vector3.Lerp(currentPosition, targetPosition, speed * Time.fixedDeltaTime);
         }        
     }
 }
