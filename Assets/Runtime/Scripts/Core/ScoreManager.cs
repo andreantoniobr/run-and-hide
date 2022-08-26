@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,47 +6,55 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     [SerializeField] private PathSegmentController pathSegmentController;
-    [SerializeField] private float updateScoreDelay = 1f;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float scorePercent;
 
     private PathSegment[] pathSegments;
-    private int score;
+    
+    private int currentPathSegmentsAmount;
+    private int pathSegmentsAmount;
+    
+    public static event Action WinScoreEvent;
+    public static event Action<float> UpdateScoreEvent;
 
     private void Awake()
     {
+        scorePercent = 0;
+        pathSegmentsAmount = 0;
+        currentPathSegmentsAmount = 0;
+
         if (pathSegmentController)
         {
             pathSegments = pathSegmentController.PathSegments;
+            pathSegmentsAmount = pathSegments.Length;
+            scorePercent = GetScorePercent();
         }
+
+        PathSegment.ActivePathEvent += IncrementScore;
     }
 
-    private void Start()
+    private void OnDestroy()
     {
-        StartCoroutine(UpdateScoreCouroutine());
+        PathSegment.ActivePathEvent -= IncrementScore;
     }
 
-    private IEnumerator UpdateScoreCouroutine()
+    private float GetScorePercent()
     {
-        while (true)
+        return (float) currentPathSegmentsAmount / pathSegmentsAmount;
+    }   
+
+    private void IncrementScore()
+    {
+        if (currentPathSegmentsAmount < pathSegmentsAmount)
         {
-            UpdateScore();
-            Debug.Log(score);
-            yield return new WaitForSeconds(updateScoreDelay);
+            currentPathSegmentsAmount++;
         }
-    }
-
-    private void UpdateScore()
-    {
-        score = 0;
-        if (pathSegments.Length > 0)
+        scorePercent = GetScorePercent();
+        UpdateScoreEvent?.Invoke(scorePercent);
+        if (scorePercent >= 1)
         {
-            for (int i = 0; i < pathSegments.Length; i++)
-            {
-                PathSegment pathSegment = pathSegments[i];
-                if (pathSegment && pathSegment.CurrentPathtype == PathType.Player)
-                {
-                    score++;
-                }
-            }
+            WinScoreEvent?.Invoke();
         }
     }
 }

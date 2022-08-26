@@ -1,20 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PathSegment : MonoBehaviour
 {
+    [SerializeField] private PathType defaultPathType;
     [SerializeField] private PathModel[] pathModels;
     [SerializeField] private List<PathModel> pathModelsList;
 
-    private PathType currentPathtype;
+    private PathType currentPathtype = PathType.None;
 
     public PathType CurrentPathtype => currentPathtype;
+
+    public static event Action ActivePathEvent;
 
     private void Start()
     {
         SpawnPaths();
-        SetPathType(PathType.Defaut);
+        SetPathType(defaultPathType);
     }
 
     private void SpawnPaths()
@@ -47,8 +51,7 @@ public class PathSegment : MonoBehaviour
                 {
                     if (pathType == pathModel.PathType)
                     {
-                        currentPathtype = pathType;
-                        pathModel.gameObject.SetActive(true);
+                        ActivePath(pathType, pathModel);
                     }
                     else
                     {
@@ -57,5 +60,21 @@ public class PathSegment : MonoBehaviour
                 }
             }
         }
+               
+    }
+
+    private void ActivePath(PathType pathType, PathModel pathModel)
+    {
+        currentPathtype = pathType;        
+        pathModel.gameObject.SetActive(true);
+    }
+
+    public void SetPathPlayer()
+    {
+        if (currentPathtype != PathType.Player)
+        {
+            ActivePathEvent?.Invoke();
+            SetPathType(PathType.Player);
+        }        
     }
 }

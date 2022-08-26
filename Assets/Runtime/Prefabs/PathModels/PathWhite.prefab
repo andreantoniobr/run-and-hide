@@ -59,5 +59,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: PathWhite
       objectReference: {fileID: 0}
+    - target: {fileID: 7841024193526772269, guid: d65fd9fb7be65d2468b95dc8eff0c0ff, type: 3}
+      propertyPath: pathType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d65fd9fb7be65d2468b95dc8eff0c0ff, type: 3}

@@ -8,11 +8,11 @@ public class GameMode : MonoBehaviour
 {
     [SerializeField] private float timeToReloadGame = 3f;
 
-    private bool isStarted = false;
+    private bool isStarted = true;
 
     public bool IsStarted => isStarted;
 
-    //public static event Action StartGameEvent;
+    public static event Action StartGameEvent;
     public static event Action GameWinEvent;
     public static event Action GameOverEvent;
     public static event Action GameReloadEvent;
@@ -27,12 +27,21 @@ public class GameMode : MonoBehaviour
         UnsubscribeInEvents();
     }
 
-    private void SubscribeInEvents()
+    private void Start()
     {
+        StartGameEvent?.Invoke();
+    }
+
+    private void SubscribeInEvents()
+    {        
+        ScoreManager.WinScoreEvent += OnGameWin;
+        EnemyController.PlayerInFieldOfViewEvent += OnGameOver;
     }
 
     private void UnsubscribeInEvents()
     {
+        ScoreManager.WinScoreEvent -= OnGameWin;
+        EnemyController.PlayerInFieldOfViewEvent -= OnGameOver;
     }
 
     private void OnGameWin()
@@ -40,16 +49,14 @@ public class GameMode : MonoBehaviour
         GameWinEvent?.Invoke();
     }
 
-    private void OnArmyDeath()
-    {
-        OnGameOver();
-    }
-
     private void OnGameOver()
     {
-        isStarted = false;
-        GameOverEvent?.Invoke();
-        StartCoroutine(ReloadGameCoroutine());
+        if (isStarted)
+        {
+            isStarted = false;
+            GameOverEvent?.Invoke();
+            StartCoroutine(ReloadGameCoroutine());
+        }        
     }
 
     private void OnFinish()

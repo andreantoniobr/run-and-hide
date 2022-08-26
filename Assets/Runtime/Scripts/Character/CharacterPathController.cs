@@ -4,7 +4,8 @@ using UnityEngine;
 
 public enum PathType
 {
-    Defaut,
+    None,
+    Default,
     Player,
     Enemy,
 }
@@ -18,17 +19,18 @@ public class CharacterPathController : MonoBehaviour
         SetPathType(other);
     }
 
+    /*
     private void OnTriggerStay(Collider other)
     {
         SetPathType(other);
-    }
+    }*/
 
     private void SetPathType(Collider other)
     {
         PathSegment pathSegment = other.GetComponent<PathSegment>();
         if (pathSegment)
         {
-            pathSegment.SetPathType(pathType);
+            pathSegment.SetPathPlayer();
         }
     }
 }

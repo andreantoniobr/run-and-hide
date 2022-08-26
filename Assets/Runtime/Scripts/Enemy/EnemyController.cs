@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +8,18 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private PathSegmentController pathSegmentController;
-    [SerializeField] private float moveDelay = 5f;
+    [SerializeField] private float minMoveDelay = 5f;
+    [SerializeField] private float maxMoveDelay = 10f;
     [SerializeField] private float chaseEnemyDelay = 0.2f;
+    [SerializeField] private float minDistanceToStop = 0.5f;
     [SerializeField] private bool isDead;
 
     private CharacterMovementController characterMovementController;    
     private CharacterFieldOfView characterFieldOfView;
 
     public bool IsDead => isDead;
+
+    public static event Action PlayerInFieldOfViewEvent;
 
     private void Awake()
     {
@@ -50,9 +55,27 @@ public class EnemyController : MonoBehaviour
             Transform target = GetClosetTarget();
             if (target)
             {
-                Move();
+                //Move();
+                GoToTarget(target);
+                PlayerInFieldOfViewEvent?.Invoke();
             }
         }
+    }
+
+    private void GoToTarget(Transform target)
+    {
+        if (target)
+        {
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            if (minDistanceToStop > distanceToTarget)
+            {
+                Stop();
+            }
+            else
+            {                
+                SetDestination(target.position);
+            }
+        }        
     }
 
     private Transform GetClosetTarget()
@@ -83,7 +106,7 @@ public class EnemyController : MonoBehaviour
         while (true)
         {            
             Move();
-            yield return new WaitForSeconds(moveDelay);
+            yield return new WaitForSeconds(UnityEngine.Random.Range(minMoveDelay, maxMoveDelay));
         }    
     }
 
@@ -103,6 +126,14 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void Stop()
+    {
+        if (characterMovementController)
+        {
+            characterMovementController.StopImmediately();
+        }
+    }
+
     private bool GetRandomPathSegmentPosition(out Vector3 position)
     {
         bool canGetPosition = false;
@@ -113,7 +144,7 @@ public class EnemyController : MonoBehaviour
             int pathSegmentsAmount = pathSegments.Length;
             if (pathSegmentsAmount > 0)
             {
-                int randomPathSegmentIndex = Random.Range(0, pathSegmentsAmount);
+                int randomPathSegmentIndex = UnityEngine.Random.Range(0, pathSegmentsAmount);
                 if (randomPathSegmentIndex >= 0 && randomPathSegmentIndex <= pathSegmentsAmount - 1)
                 {
                     PathSegment pathSegment = pathSegments[randomPathSegmentIndex];

@@ -57,8 +57,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db95aed5824fad14f9b07db02fbd6b2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultPathType: 1
   pathModels:
   - {fileID: 8285520618024459079, guid: 3b5ac88f5c02bb148bcc4de16df4c7cc, type: 3}
   - {fileID: 8285520618024459079, guid: 640ed1ca7da9ec1459140e65b46a0007, type: 3}
-  - {fileID: 8285520618024459079, guid: b9a1432fbd8d4c742909f85e59845d90, type: 3}
+  - {fileID: 8285520618024459079, guid: 4756f34450fb38f4bb7e441d04e2ebbe, type: 3}
   pathModelsList: []

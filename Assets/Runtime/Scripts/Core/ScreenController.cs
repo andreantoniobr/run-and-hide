@@ -7,6 +7,7 @@ public enum ScreenType
 {
     None  = -1,
     LevelCleared,
+    LevelFail,
 }
 
 [System.Serializable]

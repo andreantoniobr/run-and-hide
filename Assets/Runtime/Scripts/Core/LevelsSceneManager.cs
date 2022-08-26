@@ -26,8 +26,16 @@ public class LevelsSceneManager : MonoBehaviour
     private void Awake()
     {
         SetThisInstance();
-        GameMode.GameWinEvent += GoToNextLevel;
+        GameMode.StartGameEvent += OnStartGame;
+        GameMode.GameWinEvent += OnGameWin;
+        GameMode.GameOverEvent += OnGameOver;
     }
+
+    private void OnDestroy()
+    {
+        GameMode.GameWinEvent -= OnGameWin;
+        GameMode.GameOverEvent -= OnGameOver;
+    }    
 
     /*
     //TODO: VERIFY WITH EVENTS
@@ -100,7 +108,10 @@ public class LevelsSceneManager : MonoBehaviour
                 break;
             }
         }
-        nextLevel = GetRandomLevel();
+        if (nextLevel == null)
+        {
+            nextLevel = GetRandomLevel();
+        }        
         return nextLevel;
     }
 
@@ -134,9 +145,19 @@ public class LevelsSceneManager : MonoBehaviour
         yield return StartCoroutine(LoadSceneCoroutine());
     }
 
-    public void GoToNextLevel()
+    public void OnGameWin()
     {
         SetLevelIsFinished();
         PassToNextLevel();
-    }    
+    }
+
+    private void OnStartGame()
+    {
+        UIManager.Instance.ScreenController.SetInactiveAllScreens();
+    }
+
+    private void OnGameOver()
+    {
+        UIManager.Instance.ScreenController.SetActiveScreen(ScreenType.LevelFail);
+    }
 }
