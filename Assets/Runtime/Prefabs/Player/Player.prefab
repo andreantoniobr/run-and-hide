@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60904b9e6cd670e4289c0f77b7ba9845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7.5
+  speed: 7
   isRunning: 0
 --- !u!114 &7959267595230720993
 MonoBehaviour:
@@ -294,6 +294,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7959267595230721006}
     m_Modifications:
+    - target: {fileID: 5874596546643478452, guid: 6a6fc3bc0fe48684ebbce1e84aca8198, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 57db64adb0daa1145990f4edd8dfdd2b, type: 2}
     - target: {fileID: 7729037728560887675, guid: 6a6fc3bc0fe48684ebbce1e84aca8198, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -61,5 +61,5 @@ MonoBehaviour:
   pathModels:
   - {fileID: 8285520618024459079, guid: 3b5ac88f5c02bb148bcc4de16df4c7cc, type: 3}
   - {fileID: 8285520618024459079, guid: 640ed1ca7da9ec1459140e65b46a0007, type: 3}
-  - {fileID: 8285520618024459079, guid: 4756f34450fb38f4bb7e441d04e2ebbe, type: 3}
+  - {fileID: 8285520618024459079, guid: 5629c9169d995a64799a03e242caa47b, type: 3}
   pathModelsList: []
