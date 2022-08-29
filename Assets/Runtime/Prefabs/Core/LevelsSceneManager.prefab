@@ -43,9 +43,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb389f744a519a47a3652beb128c1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToLoadScene: 0.5
+  timeToLoadScene: 5
   currentGameLevel:
-    LevelNumberID: 0
-    LevelSceneName: 
+    LevelNumberID: 1
+    LevelSceneName: Level01
     IsFinished: 0
-  gameLevels: []
+  gameLevels:
+  - LevelNumberID: 1
+    LevelSceneName: Level01Ninjas
+    IsFinished: 0
+  - LevelNumberID: 2
+    LevelSceneName: Level02Ninjas
+    IsFinished: 0
+  - LevelNumberID: 3
+    LevelSceneName: Level03Ninjas
+    IsFinished: 0
+  - LevelNumberID: 4
+    LevelSceneName: Level04Ninjas
+    IsFinished: 0
+  - LevelNumberID: 5
+    LevelSceneName: Level05Ninjas
+    IsFinished: 0
+  - LevelNumberID: 6
+    LevelSceneName: Level06Ninjas
+    IsFinished: 0

@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4006376513914054913}
   - component: {fileID: 4006376513914054925}
   - component: {fileID: 4006376513914054912}
+  - component: {fileID: 5265516560627956699}
   - component: {fileID: 4006376513914054914}
   - component: {fileID: 4006376513914054926}
   - component: {fileID: 4006376513914054927}
@@ -101,6 +102,18 @@ CapsuleCollider:
   m_Height: 1.5
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5265516560627956699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006376513914054915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e9304d042d4774bbc4e00e6b5af044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4006376513914054914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,8 +126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60904b9e6cd670e4289c0f77b7ba9845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  joystick: {fileID: 0}
+  speed: 6
   isRunning: 0
+  minSwipeDistance: 5
+  startPos: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  directionChosen: 0
 --- !u!114 &4006376513914054926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +178,7 @@ MonoBehaviour:
   type: 1
   mesh: {fileID: 0}
   rectangleSize: {x: 3, y: 3}
-  circleRadius: 2
+  circleRadius: 0.5
   circleResolution: 12
   height: 1
   meshScale: 1

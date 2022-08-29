@@ -289,7 +289,7 @@ MonoBehaviour:
   radius: 0.5
   height: 1.8
   canMove: 1
-  maxSpeed: 3
+  maxSpeed: 2.5
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
@@ -347,7 +347,6 @@ MonoBehaviour:
   maxMoveDelay: 10
   chaseEnemyDelay: 0.01
   minDistanceToStop: 2
-  isDead: 0
 --- !u!1001 &2723061303192061274
 PrefabInstance:
   m_ObjectHideFlags: 0

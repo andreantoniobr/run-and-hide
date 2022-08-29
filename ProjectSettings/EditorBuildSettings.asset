@@ -6,9 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Runtime/Scenes/Level01.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Runtime/Scenes/Level01Ninjas.unity
+    guid: 51ba95c3047bc474db57a435c5213bb9
   - enabled: 1
-    path: Assets/Runtime/Scenes/Level02.unity
-    guid: fa45bd0fdaef89e40ba1bfc8051e3b21
+    path: Assets/Runtime/Scenes/Level02Ninjas.unity
+    guid: e2e52e9e5c21a86488c951c3a2774a87
+  - enabled: 1
+    path: Assets/Runtime/Scenes/Level03Ninjas.unity
+    guid: 686ff442a42c7244590e3495a914e37e
+  - enabled: 1
+    path: Assets/Runtime/Scenes/Level04Ninjas.unity
+    guid: 992a43e5ebc4fbe4ca7963565dfc4062
+  - enabled: 1
+    path: Assets/Runtime/Scenes/Level05Ninjas.unity
+    guid: 540e191c0c25b0342a7a213a9f9daa53
+  - enabled: 1
+    path: Assets/Runtime/Scenes/Level06Ninjas.unity
+    guid: 961b27f3c31bdb145acd636573580fb9
   m_configObjects: {}

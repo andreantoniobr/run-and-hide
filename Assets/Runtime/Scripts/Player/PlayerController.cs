@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Joystick joystick;
     [SerializeField] private float speed = 5f;
     [SerializeField] private bool isRunning;
 
@@ -38,13 +39,19 @@ public class PlayerController : MonoBehaviour
         }        
     }
 
+    
     private void Update()
     {
         if (isReceivingInput)
         {
-            GetKeybordInput();
-            GetTouchInput();
 
+                            
+
+
+#if UNITY_ANDROID
+            UpdateTouchInput();
+#endif
+            GetKeybordInput();
             isRunning = false;
             if (horizontalX != 0 || verticalZ != 0)
             {
@@ -53,44 +60,13 @@ public class PlayerController : MonoBehaviour
         }        
     }
 
-    private void GetTouchInput()
+    private void UpdateTouchInput()
     {
-        isRunning = false;
-        if (Input.touchCount > 0)
+        if (joystick)
         {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Moved)
-            {
-                horizontalX = 0;
-                verticalZ = 0;
-
-                float touchHorizontal = touch.deltaPosition.x;
-                float touchVertical = touch.deltaPosition.y;
-
-                if (Mathf.Abs(touchHorizontal) > Mathf.Abs(touchVertical))
-                {
-                    if (touchHorizontal > 0)
-                    {
-                        horizontalX = 1;
-                    }
-                    else if (touchHorizontal < 0)
-                    {
-                        horizontalX = -1;
-                    }
-                }
-                else
-                {
-                    if (touchVertical > 0)
-                    {
-                        verticalZ = 1;
-                    }
-                    else if (touchVertical < 0)
-                    {
-                        verticalZ = -1;
-                    }
-                }
-            }
-        }
+            horizontalX = joystick.Horizontal;
+            verticalZ = joystick.Vertical;
+        }               
     }
 
     private void GetKeybordInput()

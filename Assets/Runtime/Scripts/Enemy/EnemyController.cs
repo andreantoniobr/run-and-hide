@@ -12,12 +12,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float maxMoveDelay = 10f;
     [SerializeField] private float chaseEnemyDelay = 0.2f;
     [SerializeField] private float minDistanceToStop = 0.5f;
-    [SerializeField] private bool isDead;
 
     private CharacterMovementController characterMovementController;    
     private CharacterFieldOfView characterFieldOfView;
-
-    public bool IsDead => isDead;
 
     public static event Action PlayerInFieldOfViewEvent;
 
@@ -50,15 +47,12 @@ public class EnemyController : MonoBehaviour
 
     private void ChasingEnemys()
     {
-        if (!isDead)
+        Transform target = GetClosetTarget();
+        if (target)
         {
-            Transform target = GetClosetTarget();
-            if (target)
-            {
-                //Move();
-                GoToTarget(target);
-                PlayerInFieldOfViewEvent?.Invoke();
-            }
+            //Move();
+            GoToTarget(target);
+            PlayerInFieldOfViewEvent?.Invoke();
         }
     }
 
