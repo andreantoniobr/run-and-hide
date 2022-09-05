@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 #if UNITY_ANDROID
             UpdateTouchInput();
 #endif
-            GetKeybordInput();
+            //GetKeybordInput();
             isRunning = false;
             if (horizontalX != 0 || verticalZ != 0)
             {
