@@ -6325,6 +6325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyNinja3
       objectReference: {fileID: 0}
+    - target: {fileID: 9112117986609590535, guid: 9136e8e283af78740b6df9dcf9bca5fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9112117986609590552, guid: 9136e8e283af78740b6df9dcf9bca5fa, type: 3}
       propertyPath: m_RootOrder
       value: 0
